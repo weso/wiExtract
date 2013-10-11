@@ -22,9 +22,11 @@ class GenerateJsonSuite
 	with ShouldMatchers {
 
   describe("Generate Json") {
-   it("Should Generate Json") {
-     info("Not implemented yet")
+   it("Create an observation and return its value") {
+     val obs1 = Observation("ESP","Spain","2008","A",10)
+     obs1.value should be(10)
    }
- }
+
+}
 
 }

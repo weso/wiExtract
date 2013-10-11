@@ -57,13 +57,12 @@ object Main extends App {
    model.read(inputStream,"","TURTLE")
    
    val lsObs = createObservations(model,queryFile)
-   val json = lsObs2Json(lsObs)
-   if (opts.output.get == None) println(Json.stringify(json))
+   if (opts.output.get == None) println(Observation.prettyPrintObs(lsObs))
    else {
      val fileOutput = opts.output()
      val file = new File(fileOutput)
      val bw = new BufferedWriter(new FileWriter(file))
-     bw.write(Json.stringify(json))
+     bw.write(Observation.stringifyObs(lsObs))
      bw.close
      println("JSOn Output saved in " + fileOutput)
    }
@@ -103,18 +102,6 @@ object Main extends App {
       answer += obs
     } 
     answer
-  }
-
-  def obs2Json(obs: Observation) : JsValue = {
-    Json.obj("countryCode" -> obs.countryCode,
-             "countryName" -> obs.countryName,
-             "year" -> obs.year,
-             "indicatorCode" -> obs.indicatorCode,
-             "value" -> obs.value)
-  }
-  
-  def lsObs2Json(lsObs : Seq[Observation]) : JsValue = {
-    Json.toJson(lsObs.map(o => obs2Json(o)))
   }
   
 } 

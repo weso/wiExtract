@@ -21,7 +21,7 @@ prefix wi-org: <http://data.webfoundation.org/webindex/v2013/organization/>
 prefix skos:  <http://www.w3.org/2004/02/skos/core#> 
 prefix smdx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> 
 
-SELECT ?countryCode ?countryName ?year ?indicatorCode ?value WHERE {
+SELECT ?countryCode ?countryName ?year ?indicatorCode ?indicator ?value WHERE {
  ?obs a qb:Observation ;
       cex:indicator ?indicator ;
 	  wi-onto:ref-area ?country ;
