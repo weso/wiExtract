@@ -97,8 +97,10 @@ object Main extends App {
       val countryName = soln.get("countryName").asLiteral.getLexicalForm
       val year = soln.get("year").asLiteral.getLexicalForm
       val indicatorCode = soln.get("indicatorCode").asLiteral.getLexicalForm
-      val value = soln.get("value").asLiteral.getFloat
-      val obs = Observation(countryCode,countryName,year,indicatorCode,value)
+      val value 		= soln.get("value").asLiteral.getFloat
+      val datasetName 	= soln.get("datasetName").asLiteral.getLexicalForm
+      val sheet_type 	= soln.get("sheet_type").asResource().getLocalName()
+      val obs = Observation(countryCode,countryName,year,indicatorCode,value,datasetName,sheet_type)
       answer += obs
     } 
     answer

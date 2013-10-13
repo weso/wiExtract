@@ -21,14 +21,24 @@ prefix wi-org: <http://data.webfoundation.org/webindex/v2013/organization/>
 prefix skos:  <http://www.w3.org/2004/02/skos/core#> 
 prefix smdx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> 
 
-SELECT ?countryCode ?countryName ?year ?indicatorCode ?indicator ?value WHERE {
+SELECT ?countryCode 
+       ?countryName 
+	   ?year 
+	   ?indicatorCode 
+	   ?indicator 
+	   ?sheet_type
+	   ?datasetName
+	   ?value WHERE {
  ?obs a qb:Observation ;
       cex:indicator ?indicator ;
 	  wi-onto:ref-area ?country ;
 	  cex:value ?value ;
+	  wi-onto:sheet-type ?sheet_type ;
+	  qb:dataSet ?dataset ;
 	  wi-onto:ref-year ?year .
 	  
  ?country wi-onto:has-iso-alpha3-code ?countryCode ;
           rdfs:label ?countryName .
  ?indicator rdfs:label ?indicatorCode .
+ ?dataset rdfs:label ?datasetName .
 }

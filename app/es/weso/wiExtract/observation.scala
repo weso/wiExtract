@@ -8,7 +8,9 @@ case class Observation(
     countryName: String,
     year: String,
     indicatorCode: String,
-    value: Float) {
+    value: Float,
+    datasetName: String,
+    sheet_type: String) {
     
   def toJson() : JsValue = {
 
@@ -16,7 +18,9 @@ case class Observation(
              "countryName" -> countryName,
              "year" -> year,
              "indicatorCode" -> indicatorCode,
-             "value" -> value)
+             "value" -> value,
+             "datasetName" -> datasetName,
+             "sheet-type" -> sheet_type)
   }
 
 }
@@ -29,6 +33,6 @@ object Observation {
 
   def stringifyObs(lsObs : Seq[Observation]) : String = {
     val json = Json.toJson(lsObs.map(o => o.toJson))
-    Json.prettyPrint(json)
+    Json.stringify(json)
   }
 }
