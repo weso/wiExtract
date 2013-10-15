@@ -1,0 +1,1 @@
+fuseki-server --file dataset-simple.ttl /data

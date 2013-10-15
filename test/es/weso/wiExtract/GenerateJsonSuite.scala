@@ -23,7 +23,7 @@ class GenerateJsonSuite
 
   describe("Generate Json") {
    it("Create an observation and return its value") {
-     val obs1 = Observation("ESP","Spain","2008","A",10)
+     val obs1 = Observation("ESP","Spain","2008","A",10,"dataset-A","sheet_A")
      obs1.value should be(10)
    }
 
