@@ -29,10 +29,16 @@ class QueriesSuite
   val simpleModel = JenaUtils.parseFromURI(simpleModelURI)
    
   describe("List all indicators") {
-   it("List all indicators") {
+   ignore("List all indicators") {
      val query : String = Source.fromFile(queryDir + "indicators.sparql").mkString
      val result = JenaUtils.querySelectModel(query,simpleModel)
      countResults(result) should be(6)
+   }
+
+   ignore("List all Weights") {
+     val query : String = Source.fromFile(queryDir + "weights.sparql").mkString
+     val result = JenaUtils.querySelectModel(query,simpleModel)
+     countResults(result) should be(10)
    }
 
    

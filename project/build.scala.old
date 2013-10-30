@@ -1,6 +1,5 @@
 import sbt._
 import Keys._
-import play.Project._
 
 object ApplicationBuild extends Build {
 
@@ -10,8 +9,6 @@ object ApplicationBuild extends Build {
 
   val appDependencies = Seq(
     // Add your project dependencies here,
-    jdbc,
-    anorm,
     "junit" % "junit" % "4.8.1" % "test",
     "commons-configuration" % "commons-configuration" % "1.7",
     "org.apache.jena" % "apache-jena-libs" % "2.11.0" excludeAll(ExclusionRule(organization = "org.slf4j")),
@@ -23,8 +20,8 @@ object ApplicationBuild extends Build {
   )
 
 
-  val main = play.Project(appName, appVersion, appDependencies).settings(
+/*  val main = play.Project(appName, appVersion, appDependencies).settings(
     // Add your own project settings here      
-  )
+  ) */
 
 }

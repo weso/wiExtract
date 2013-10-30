@@ -12,10 +12,10 @@ import scala.io.Source
 import es.weso.utils.JenaUtils
 import com.hp.hpl.jena.query.ResultSet
 import scala.collection.mutable.ArrayBuffer
-import play.api.libs.json._
 import java.io.File
 import java.io.BufferedWriter
 import java.io.FileWriter
+import java.io.FileNotFoundException
 
 class Opts(arguments: Array[String],
     onError: (Throwable, Scallop) => Nothing
@@ -51,18 +51,18 @@ object Main extends App {
   
   val opts 	= new Opts(args,onError)
   try {
-   val queryFile = conf.getString("queryObservations") 
+   val queryFile = getFilePath(conf.getString("queryObservations"),true) 
    val model = ModelFactory.createDefaultModel
    val inputStream = FileManager.get.open(opts.fileName())
    model.read(inputStream,"","TURTLE")
    
    val lsObs = createObservations(model,queryFile)
-   if (opts.output.get == None) println(Observation.prettyPrintObs(lsObs))
+   if (opts.output.get == None) println(Observation.toJson(lsObs))
    else {
      val fileOutput = opts.output()
      val file = new File(fileOutput)
      val bw = new BufferedWriter(new FileWriter(file))
-     bw.write(Observation.stringifyObs(lsObs))
+     bw.write(Observation.toJson(lsObs))
      bw.close
      println("JSOn Output saved in " + fileOutput)
    }
@@ -81,6 +81,23 @@ object Main extends App {
       scallop.printHelp
       sys.exit(1)
   }
+  
+  def getFilePath(path: String, relativePath: Boolean): String = {
+    if (path == null) {
+      throw new IllegalArgumentException("Path cannot be null")
+    }
+    if (relativePath) {
+      val resource = getClass.getClassLoader().getResource(path)
+      if (resource == null)
+        throw new FileNotFoundException("File especifies does not exist")
+      resource.getPath()
+    } else
+      path
+  }
+  
+/*  def createObservations(model:Model) : ArrayBuffer[Observation] = {
+   
+  } */
   
   def createObservations(model: Model, queryFile: String) : ArrayBuffer[Observation] = {
     val queryStr = Source.fromFile(queryFile).mkString
