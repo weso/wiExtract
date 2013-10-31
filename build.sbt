@@ -3,9 +3,11 @@ import Keys._
 import sbtassembly.Plugin._
 import AssemblyKeys._
 
+organization := "es.weso"
+
 name := "WiExtract"
 
-version := "1.0"
+version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.10.2"
 
@@ -33,3 +35,48 @@ mergeStrategy in assembly <<= (mergeStrategy in assembly) { mergeStrategy => {
     }
   }
 }
+
+// Maven Central Specifics
+
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (version.value.trim.endsWith("SNAPSHOT"))
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+
+publishMavenStyle := true
+
+publishArtifact in Test := false
+
+pomIncludeRepository := { _ => false }
+
+pomExtra := (
+  <url>https://github.com/weso/wiFetcher</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>https://github.com/weso/wiExtract</url>
+    <connection>scm:git:git@github.com:weso/wiExtract.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <name>Jose Emilio Labra Gayo</name>
+      <email>jelabra@gmail.com</email>
+      <url>http://www.di.uniovi.es/~labra</url>
+      <organization>WESO</organization>
+      <organizationUrl>http://www.weso.es</organizationUrl>
+      <roles>
+        <role>Project Manager</role>
+        <role>architect</role>
+        <role>developer</role>
+        <role>tester</role>
+      </roles>
+     </developer>
+  </developers>)
