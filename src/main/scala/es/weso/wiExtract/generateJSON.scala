@@ -51,12 +51,12 @@ object Main extends App {
   
   val opts 	= new Opts(args,onError)
   try {
-   val queryFile = getFilePath(conf.getString("queryObservations"),true) 
+   val queryStr = getFileContents(conf.getString("queryObservations")) 
    val model = ModelFactory.createDefaultModel
    val inputStream = FileManager.get.open(opts.fileName())
    model.read(inputStream,"","TURTLE")
    
-   val lsObs = createObservations(model,queryFile)
+   val lsObs = createObservations(model,queryStr)
    if (opts.output.get == None) println(Observation.toJson(lsObs))
    else {
      val fileOutput = opts.output()
@@ -82,26 +82,18 @@ object Main extends App {
       sys.exit(1)
   }
   
-  def getFilePath(path: String, relativePath: Boolean): String = {
-    if (path == null) {
-      throw new IllegalArgumentException("Path cannot be null")
-    }
-    if (relativePath) {
-      val resource = getClass.getClassLoader().getResource(path)
-      if (resource == null)
-        throw new FileNotFoundException("File especifies does not exist")
-      resource.getPath()
-    } else
-      path
+  def getFileContents(path: String): String = {
+      val inputStream = getClass.getClassLoader().getResourceAsStream(path)
+      if (inputStream == null)
+        throw new FileNotFoundException("File especified does not exist")
+      Source.fromInputStream(inputStream).getLines.mkString("\n")
   }
   
 /*  def createObservations(model:Model) : ArrayBuffer[Observation] = {
    
   } */
   
-  def createObservations(model: Model, queryFile: String) : ArrayBuffer[Observation] = {
-    val queryStr = Source.fromFile(queryFile).mkString
-    println(queryStr)
+  def createObservations(model: Model, queryStr: String) : ArrayBuffer[Observation] = {
     val result = JenaUtils.querySelectModel(queryStr,model)
     findObservations(result)
   }
