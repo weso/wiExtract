@@ -11,13 +11,14 @@ case class Observation(
     
   def toJson() : String = {
 
+   "{ " + 
    List(pair("countryCode",countryCode),
         pair("countryName",countryName),
         pair("year",year),
         pair("indicatorCode",indicatorCode),
         pair("value", value),
         pair("datasetName",datasetName),
-        pair("sheet-type",sheet_type)).mkString(",")
+        pair("sheet-type",sheet_type)).mkString(",") + " }"
   }
 
   private def pair(key:String, value:String) = {
@@ -38,6 +39,6 @@ case class Observation(
 
 object Observation {
   def toJson(lsObs : Seq[Observation]) : String = {
-    "[" + lsObs.map(o => o.toJson).mkString(",\n") + "]"
+    "[ \n" + lsObs.map(o => o.toJson).mkString(",\n") + "\n]"
   }
 }
