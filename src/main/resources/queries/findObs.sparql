@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cex: <http://purl.org/weso/ontology/computex#>
+PREFIX wf-onto: <http://data.webfoundation.org/ontology/>
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX wi-country: <http://data.webfoundation.org/webindex/v2013/country/>
+PREFIX wi-indicator: <http://data.webfoundation.org/webindex/v2013/indicator/>
+
+SELECT ?obs ?value
+WHERE {
+ ?obs cex:computation [ a cex:Normalize ] ;
+      cex:indicator wi-indicator:WB_H ;
+      wf-onto:ref-year 2012 ;
+	  cex:value ?value ;
+	  wf-onto:ref-area wi-country:ESP .
+} 

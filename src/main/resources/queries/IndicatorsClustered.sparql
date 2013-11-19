@@ -1,0 +1,10 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cex: <http://purl.org/weso/ontology/computex#>
+PREFIX wf-onto: <http://data.webfoundation.org/ontology/>
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX wi-country: <http://data.webfoundation.org/webindex/v2013/country/>
+PREFIX wi-indicator: <http://data.webfoundation.org/webindex/v2013/indicator/>
+
+SELECT ?valueA ?valueB ?valueQ2 ?valueC ?valueD ?valueQ1
+WHERE {
+ } 

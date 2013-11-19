@@ -1,0 +1,17 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cex: <http://purl.org/weso/ontology/computex#>
+PREFIX wf-onto: <http://data.webfoundation.org/ontology/>
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX wi-country: <http://data.webfoundation.org/webindex/v2013/country/>
+
+SELECT ?ind ?value ?obsFrom
+WHERE {
+ ?obs rdf:type qb:Observation .
+ ?obs wf-onto:ref-area wi-country:FRA .
+ ?obs cex:computation ?comp .
+ ?comp a cex:Normalize  .
+ ?comp cex:observation ?obsFrom .
+ ?obs cex:indicator ?ind .
+ ?obs cex:value ?value .
+} 
+ORDER BY ?ind 

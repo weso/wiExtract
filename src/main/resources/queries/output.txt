@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| obs                  | value                            | group                                                      | element                      | valueMap                          | weight            |
+===============================================================================================================================================================================================================
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:FH_B            | "1.0772342156349095"^^xsd:double  | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:Q10             | "1.122962563297538"^^xsd:double   | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:Q7              | "0.7894391613317483"^^xsd:double  | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:ODB.2013.C.INIT | "0.9615587406117463"^^xsd:double  | "0.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:FH_A            | "0.9314403347198655"^^xsd:double  | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:Q11             | "0.7776567271183613"^^xsd:double  | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:ODB.2013.C.RTI  | "-1.5243793539436012"^^xsd:double | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:ODB.2013.C.CSOC | "0.618691281103251"^^xsd:double   | "0.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:WEF_A           | "0.5181308477323147"^^xsd:double  | "0.5"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:EIU_A           | "0.33694350631581754"^^xsd:double | "1.0"^^xsd:double |
+| wi-obs:computed54614 | "0.3677205095819487"^^xsd:double | <http://data.webfoundation.org/webindex/v2013/bnode/54616> | wi-indicator:RSF_A           | "0.5491260541212788"^^xsd:double  | "0.5"^^xsd:double |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
